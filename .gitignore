@@ -1,0 +1,37 @@
+# Temporary development sandbox and configuration runtimes
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+.snowflake/
+.v0-trash/
+.vercel/
+
+# Environment variables (all forms)
+.env
+.env.*
+.env*.local
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+
+# Common ignores
+node_modules
+.next/
+out/
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+desktop.ini
