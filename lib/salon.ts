@@ -13,12 +13,12 @@ export const SALON = {
 }
 
 export const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Brands', href: '#brands' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Before & After', href: '/before-after' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const SERVICES = [

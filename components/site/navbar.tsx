@@ -32,7 +32,7 @@ export function Navbar() {
         aria-label="Main navigation"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-8"
       >
-        <Link href="#home" aria-label="Deep Cuts Salon — Home" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label="Deep Cuts Salon — Home" onClick={() => setOpen(false)}>
           <Logo />
         </Link>
 
