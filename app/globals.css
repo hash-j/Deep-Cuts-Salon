@@ -129,6 +129,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  section[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 /* Diagonal-stripe pattern used by image placeholders */

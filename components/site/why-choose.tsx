@@ -61,7 +61,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   }, [inView, value])
 
   return (
-    <span ref={ref} className="font-display text-5xl font-semibold text-primary md:text-6xl">
+    <span ref={ref} className="font-display text-2xl font-semibold text-primary sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
       {display.toLocaleString()}
       {suffix}
     </span>
