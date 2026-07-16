@@ -37,7 +37,7 @@ To run the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to view the application.
+Open ([http://localhost:3000](https://deep-cuts-salon.vercel.app/)) with your browser to view the application.
 
 ### Production Build
 
