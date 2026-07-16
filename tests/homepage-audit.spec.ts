@@ -80,11 +80,6 @@ test.describe('Homepage — All Sections Render', () => {
     await expect(page.locator('#reviews')).toBeVisible();
   });
 
-  test('brands section is visible', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('#brands')).toBeVisible();
-  });
-
   test('gallery section is visible', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('#gallery')).toBeVisible();
@@ -111,24 +106,17 @@ test.describe('Homepage — Desktop Navigation', () => {
     await expect(page.locator('nav[aria-label="Main navigation"]')).toBeVisible();
   });
 
-  test('desktop nav links point to valid section anchors', async ({ page }) => {
+  test('desktop nav links point to the live pages', async ({ page }) => {
     await page.goto('/');
     // Desktop nav links (hidden on mobile with lg:flex)
     const navLinks = page.locator('nav[aria-label="Main navigation"] ul.lg\\:flex a');
     const count = await navLinks.count();
     expect(count).toBeGreaterThanOrEqual(5);
 
-    for (let i = 0; i < count; i++) {
-      const href = await navLinks.nth(i).getAttribute('href');
-      expect(href).toBeTruthy();
-      // Each href should be an anchor like #home, #services, etc.
-      expect(href).toMatch(/^#\w+/);
-      // The target section should exist on the page
-      if (href) {
-        const section = page.locator(href);
-        await expect(section).toBeAttached();
-      }
-    }
+    const hrefs = await navLinks.evaluateAll((links) =>
+      links.map((link) => link.getAttribute('href')),
+    );
+    expect(hrefs).toEqual(['/', '/about', '/services', '/gallery', '/contact']);
   });
 
   test('Book Now button in navbar exists and links to WhatsApp', async ({ page }) => {
@@ -306,7 +294,7 @@ test.describe('404 — Non-existent page', () => {
 // ═══════════════════════════════════════════════════════════
 
 test.describe('Homepage — Footer', () => {
-  test('footer Quick Links point to valid section anchors', async ({ page }) => {
+  test('footer Quick Links point to the live pages', async ({ page }) => {
     await page.goto('/');
     const footerNav = page.locator('nav[aria-label="Footer navigation"]');
     await expect(footerNav).toBeVisible();
@@ -314,15 +302,10 @@ test.describe('Homepage — Footer', () => {
     const count = await links.count();
     expect(count).toBeGreaterThanOrEqual(5);
 
-    for (let i = 0; i < count; i++) {
-      const href = await links.nth(i).getAttribute('href');
-      expect(href).toBeTruthy();
-      expect(href).toMatch(/^#\w+/);
-      if (href) {
-        const section = page.locator(href);
-        await expect(section).toBeAttached();
-      }
-    }
+    const hrefs = await links.evaluateAll((items) =>
+      items.map((item) => item.getAttribute('href')),
+    );
+    expect(hrefs).toEqual(['/', '/about', '/services', '/gallery', '/contact']);
   });
 
   test('footer social links are present', async ({ page }) => {
@@ -364,12 +347,12 @@ test.describe('Homepage — Hero Section', () => {
     expect(href).toContain('whatsapp');
   });
 
-  test('hero Explore Services button links to #services', async ({ page }) => {
+  test('hero Explore Services button links to the services page', async ({ page }) => {
     await page.goto('/');
     const exploreBtn = page.locator('#home a', { hasText: 'Explore Services' });
     await expect(exploreBtn).toBeVisible();
     const href = await exploreBtn.getAttribute('href');
-    expect(href).toBe('#services');
+    expect(href).toBe('/services');
   });
 });
 
@@ -410,6 +393,6 @@ test.describe('Homepage — Contact Section', () => {
     const directionsBtn = page.locator('#contact a', { hasText: 'Get Directions' });
     await expect(directionsBtn).toBeVisible();
     const href = await directionsBtn.getAttribute('href');
-    expect(href).toContain('google');
+    expect(href).toContain('maps.app.goo.gl');
   });
 });

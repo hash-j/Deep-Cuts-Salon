@@ -7,7 +7,7 @@ import { ImagePlaceholder } from '@/components/site/image-placeholder'
 import { SALON, SERVICES } from '@/lib/salon'
 
 export const metadata: Metadata = {
-  title: 'Services | Deep Cuts Salon — Expert Grooming in Canal Garden, Lahore',
+  title: 'Services',
   description:
     'Explore all Deep Cuts Salon services: men\'s haircuts, beard styling, hair color, treatments, women\'s styling, kids cuts, facials, and bridal/event looks.',
 }
@@ -16,7 +16,7 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
 
         {/* ── Hero ── */}
         <section className="relative flex min-h-[55vh] flex-col justify-end overflow-hidden border-b border-border">
@@ -24,6 +24,8 @@ export default function ServicesPage() {
             <ImagePlaceholder
               src="/images/services/mens-haircut.png"
               label="Premium salon services at Deep Cuts"
+              priority
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/65 to-background/25" />
           </div>
@@ -53,11 +55,6 @@ export default function ServicesPage() {
                   <div className="group relative flex flex-col bg-background transition-colors hover:bg-secondary">
                     {/* Image panel */}
                     <div className="relative h-64 overflow-hidden md:h-72">
-                      {/*
-                        IMAGES NEEDED — one per service inside public/images/services/:
-                        mens-haircut.png, beard-trim.png, hair-color.png, hair-treatment.png,
-                        womens-styling.png, kids-haircut.png, facial-grooming.png, bridal-styling.png
-                      */}
                       <ImagePlaceholder
                         src={service.image}
                         label={`Deep Cuts Salon — ${service.title}`}

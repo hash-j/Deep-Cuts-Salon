@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -11,6 +12,8 @@ import { Logo } from './logo'
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === 'true'
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -19,10 +22,27 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
+
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-500',
+        'fixed inset-x-0 z-50 transition-all duration-500',
+        demoMode ? 'top-8' : 'top-0',
         scrolled
           ? 'border-b border-white/5 bg-background/70 backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent',
@@ -42,7 +62,13 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+                aria-current={pathname === link.href ? 'page' : undefined}
+                className={cn(
+                  'relative py-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform',
+                  pathname === link.href
+                    ? 'text-foreground after:scale-x-100'
+                    : 'text-muted-foreground after:scale-x-0 hover:text-foreground hover:after:scale-x-100',
+                )}
               >
                 {link.label}
               </Link>
@@ -90,7 +116,11 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-border py-4 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    className={cn(
+                      'block border-b border-border py-4 text-sm font-medium uppercase tracking-[0.2em] transition-colors',
+                      pathname === link.href ? 'text-primary' : 'text-muted-foreground hover:text-foreground',
+                    )}
                   >
                     {link.label}
                   </Link>

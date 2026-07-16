@@ -49,7 +49,7 @@ async function getTextOverflowWarnings(page: Page, selector: string) {
     const els = document.querySelectorAll(sel)
     const issues: { tag: string; id: string; class: string; text: string }[] = []
     els.forEach((el) => {
-      const { scrollWidth, clientWidth, scrollHeight, clientHeight } = el
+      const { scrollWidth, clientWidth } = el
       if (scrollWidth > clientWidth + 1) {
         issues.push({
           tag: el.tagName,
@@ -173,7 +173,7 @@ VIEWPORTS.forEach((size) => {
     test('all images have natural dimensions and are not zero-size', async ({ page }) => {
       await page.goto('/')
       // Scroll through each section to trigger Next.js lazy image loading
-      const anchors = ['#home', '#services', '#about', '#gallery', '#brands', '#reviews', '#contact']
+      const anchors = ['#home', '#services', '#about', '#gallery', '#reviews', '#contact']
       for (const anchor of anchors) {
         try {
           await page.locator(anchor).scrollIntoViewIfNeeded()
@@ -242,15 +242,16 @@ test.describe('Mobile Menu — 390x844', () => {
     await page.waitForTimeout(600)
 
     // Click services link in the mobile menu
-    const servicesLink = page.locator('header .lg\\:hidden ul a[href="#services"]')
+    const servicesLink = page.locator('header .lg\\:hidden ul a[href="/services"]')
     await servicesLink.click()
     await page.waitForTimeout(800)
 
     // Menu should close — open button visible again
     await expect(page.locator('button[aria-label="Open menu"]')).toBeVisible()
 
-    // Should scroll to services section
-    await expect(page.locator('#services')).toBeVisible()
+    // Should navigate to the services page
+    await expect(page).toHaveURL(/\/services$/)
+    await expect(page.locator('main#main-content')).toBeVisible()
 
     const overflow = await page.evaluate(() => {
       return document.documentElement.scrollWidth > document.documentElement.clientWidth
@@ -282,8 +283,8 @@ VIEWPORTS.forEach((size) => {
       await page.goto('/')
 
       // Test each section independently by navigating directly to its hash
-      // Page DOM order: home, services, reviews, brands, gallery, contact
-      const sections = ['#services', '#reviews', '#brands', '#gallery', '#contact']
+      // Page DOM order: home, services, reviews, gallery, contact
+      const sections = ['#services', '#reviews', '#gallery', '#contact']
 
       for (const href of sections) {
         // Navigate directly to the hash (simulates nav link click)

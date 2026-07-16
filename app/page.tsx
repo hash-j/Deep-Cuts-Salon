@@ -5,7 +5,6 @@ import { About } from '@/components/site/about'
 import { WhyChoose } from '@/components/site/why-choose'
 import { Testimonials } from '@/components/site/testimonials'
 import { InstagramSection } from '@/components/site/instagram'
-import { Brands } from '@/components/site/brands'
 import { Gallery } from '@/components/site/gallery'
 import { Location } from '@/components/site/location'
 import { FinalCta } from '@/components/site/final-cta'
@@ -15,14 +14,13 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Services />
         <About />
         <WhyChoose />
         <Testimonials />
         <InstagramSection />
-        <Brands />
         <Gallery />
         <Location />
         <FinalCta />

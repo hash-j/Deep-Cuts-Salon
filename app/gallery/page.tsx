@@ -7,15 +7,10 @@ import { InstagramIcon } from '@/components/site/social-icons'
 import { SALON } from '@/lib/salon'
 
 export const metadata: Metadata = {
-  title: 'Gallery | Deep Cuts Salon — Salon Interior, Haircuts & Grooming Photos',
+  title: 'Gallery',
   description:
     'Browse the Deep Cuts Salon photo gallery — salon interior, precision haircuts, beard styling, and grooming results from Canal Garden, Lahore.',
 }
-
-// ── Gallery data ──────────────────────────────────────────
-// IMAGES NEEDED: public/images/gallery/gallery-1.png through gallery-5.png (homepage already uses these)
-// For the interior section add: public/images/gallery/interior-1.png, interior-2.png, interior-3.png
-// For the grooming section add: public/images/gallery/grooming-1.png through grooming-4.png
 
 const INTERIOR_ITEMS = [
   { src: '/images/gallery/interior-1.png', label: 'Salon front entrance', span: 'md:col-span-2 md:row-span-2' },
@@ -86,7 +81,7 @@ export default function GalleryPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
 
         {/* ── Hero ── */}
         <section className="relative flex min-h-[55vh] flex-col justify-end overflow-hidden border-b border-border">
@@ -94,6 +89,8 @@ export default function GalleryPage() {
             <ImagePlaceholder
               src="/images/gallery/gallery-1.png"
               label="Deep Cuts Salon gallery"
+              priority
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
           </div>

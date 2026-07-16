@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Clock, MapPin, CalendarDays } from 'lucide-react'
 import { SALON } from '@/lib/salon'
@@ -27,10 +28,12 @@ export function Hero() {
       className="relative flex min-h-svh flex-col justify-end overflow-hidden"
     >
       {/* Parallax layered background image — moody barbershop scene */}
-      <motion.div style={{ y: backgroundY }} className="absolute inset-0 h-[115%] w-full">
+      <motion.div style={{ y: backgroundY }} className="hero-parallax absolute inset-0 h-[115%] w-full">
         <ImagePlaceholder
           src="/images/salon/hero-bg.png"
           label="Barber giving a precision haircut at Deep Cuts Salon"
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
       </motion.div>
@@ -40,7 +43,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease }}
-          className="mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-primary"
+          className="hero-motion mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-primary"
         >
           Unisex Salon · Canal Garden Lahore
         </motion.p>
@@ -49,7 +52,7 @@ export function Hero() {
           {['Sharp Cuts.', 'Clean Style.', 'Deep Confidence.'].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
-                className="block"
+                className="hero-motion block"
                 initial={{ y: '110%' }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, delay: 0.2 + i * 0.15, ease }}
@@ -64,7 +67,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7, ease }}
-          className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
+          className="hero-motion mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
         >
           Premium grooming, styling, and salon services for men, women, and kids
           in Canal Garden Lahore.
@@ -74,7 +77,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85, ease }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="hero-motion mt-10 flex flex-col gap-4 sm:flex-row"
         >
           <a
             href={SALON.whatsapp}
@@ -84,12 +87,12 @@ export function Hero() {
           >
             Book Appointment
           </a>
-          <a
-            href="#services"
+          <Link
+            href="/services"
             className="border border-foreground/30 px-10 py-4 text-center text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:text-primary hover:shadow-[0_0_20px_rgba(212,163,89,0.15)]"
           >
             Explore Services
-          </a>
+          </Link>
         </motion.div>
 
         {/* Quick info strip */}
@@ -97,7 +100,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.05 }}
-          className="mt-14 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+          className="hero-motion mt-14 flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground"
         >
           <li className="flex items-center gap-2">
             <CalendarDays className="h-4 w-4 text-primary" aria-hidden="true" />

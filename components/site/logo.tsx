@@ -12,6 +12,7 @@ export function Logo({ className }: { className?: string }) {
       alt="Deep Cuts Salon"
       width={140}
       height={100}
+      priority
       className={cn('h-12 w-auto invert', className)}
     />
   )

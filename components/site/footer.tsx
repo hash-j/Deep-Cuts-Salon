@@ -70,7 +70,7 @@ export function Footer() {
           <ul className="mt-5 flex flex-col gap-3 text-sm">
             <li className="leading-relaxed text-muted-foreground">{SALON.address}</li>
             <li>
-              <a href={`tel:${SALON.phone}`} className="transition-colors hover:text-primary">
+              <a href={`tel:${SALON.phoneLink}`} className="transition-colors hover:text-primary">
                 {SALON.phone}
               </a>
             </li>

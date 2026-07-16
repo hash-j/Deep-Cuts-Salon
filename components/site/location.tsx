@@ -28,7 +28,7 @@ export function Location() {
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                 <div>
                   <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Phone</p>
-                  <a href={`tel:${SALON.phone}`} className="mt-1 block text-sm transition-colors hover:text-primary">
+                  <a href={`tel:${SALON.phoneLink}`} className="mt-1 block text-sm transition-colors hover:text-primary">
                     {SALON.phone}
                   </a>
                 </div>

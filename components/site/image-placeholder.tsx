@@ -8,10 +8,14 @@ export function ImagePlaceholder({
   src,
   label,
   className,
+  priority = false,
+  sizes = '(max-width: 768px) 100vw, 50vw',
 }: {
   src: string
   label: string
   className?: string
+  priority?: boolean
+  sizes?: string
 }) {
   return (
     <div className={cn('relative h-full w-full overflow-hidden bg-secondary', className)}>
@@ -19,7 +23,8 @@ export function ImagePlaceholder({
         src={src || '/placeholder.svg'}
         alt={label}
         fill
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes={sizes}
+        loading={priority ? 'eager' : 'lazy'}
         className="object-cover"
       />
     </div>

@@ -1,4 +1,4 @@
-import { SALON } from '@/lib/salon'
+import Link from 'next/link'
 import { ImagePlaceholder } from './image-placeholder'
 import { Reveal } from './reveal'
 
@@ -25,14 +25,12 @@ export function Gallery() {
                 Gallery
               </h2>
             </div>
-            <a
-              href={SALON.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/gallery"
               className="w-fit border border-foreground/30 px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               View Full Gallery
-            </a>
+            </Link>
           </div>
         </Reveal>
 

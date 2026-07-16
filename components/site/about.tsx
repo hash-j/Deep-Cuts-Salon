@@ -1,4 +1,4 @@
-import { SALON } from '@/lib/salon'
+import Link from 'next/link'
 import { ImagePlaceholder } from './image-placeholder'
 import { Reveal } from './reveal'
 
@@ -34,14 +34,12 @@ export function About() {
               craft station. Open every single day until late, because confidence
               doesn&apos;t keep office hours.
             </p>
-            <a
-              href={SALON.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
               className="mt-10 inline-block w-fit border border-foreground/30 px-10 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               Visit The Salon
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>

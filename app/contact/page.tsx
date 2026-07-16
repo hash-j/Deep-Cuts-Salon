@@ -7,7 +7,7 @@ import { InstagramIcon, FacebookIcon } from '@/components/site/social-icons'
 import { SALON } from '@/lib/salon'
 
 export const metadata: Metadata = {
-  title: 'Contact | Deep Cuts Salon — Visit Us in Canal Garden, Lahore',
+  title: 'Contact',
   description:
     'Contact Deep Cuts Salon in Canal Garden Lahore. Call, WhatsApp, or get directions. Open Monday to Sunday, 8am to 4am.',
 }
@@ -24,7 +24,7 @@ const CONTACT_CARDS = [
     icon: Phone,
     label: 'Phone',
     value: SALON.phone,
-    href: `tel:${SALON.phone}`,
+    href: `tel:${SALON.phoneLink}`,
     action: 'Call Now',
   },
   {
@@ -62,7 +62,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
 
         {/* ── Hero ── */}
         <section className="border-b border-border bg-secondary/40">
@@ -89,7 +89,7 @@ export default function ContactPage() {
                   Book on WhatsApp
                 </a>
                 <a
-                  href={`tel:${SALON.phone}`}
+                  href={`tel:${SALON.phoneLink}`}
                   className="inline-flex items-center gap-3 border border-foreground/30 px-8 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                     <div>
                       <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Phone</p>
-                      <a href={`tel:${SALON.phone}`} className="mt-1 block text-sm transition-colors hover:text-primary">
+                      <a href={`tel:${SALON.phoneLink}`} className="mt-1 block text-sm transition-colors hover:text-primary">
                         {SALON.phone}
                       </a>
                     </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
             {/* Google Maps embed */}
             <div className="relative min-h-[400px] lg:min-h-[600px]">
               <iframe
-                src="https://maps.google.com/maps?q=Canal+Garden+Lahore+Pakistan&output=embed&z=15"
+                src="https://www.google.com/maps?q=Deep+Cuts+Salon,+Plaza+34,+Canal+Garden,+Lahore&output=embed&z=16"
                 width="100%"
                 height="100%"
                 style={{ border: 0, display: 'block', minHeight: '400px' }}

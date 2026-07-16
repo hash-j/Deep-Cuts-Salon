@@ -1,13 +1,15 @@
 export const SALON = {
   name: 'Deep Cuts Salon',
   address: 'Plaza #34, Canal Garden Lahore, Block B-C, Lahore, Pakistan 53720',
-  mapsUrl: 'https://share.google/f0VtXtPKqM2M2SalI',
+  mapsUrl: 'https://maps.app.goo.gl/iGAsgScY5Qay11cU6',
   phone: '03288787587',
+  phoneLink: '+923288787587',
   email: 'deepcutssalon@gmail.com',
   facebook: 'https://www.facebook.com/p/Deep-Cuts-Salon-61576274226011/',
   instagram: 'https://www.instagram.com/deepcutssalon/?hl=en',
   whatsapp:
     'https://api.whatsapp.com/message/E5BU3ZEB3DK2C1?autoload=1&app_absent=0',
+  // DEVELOPMENT NOTICE: Business hours must be confirmed with the owner before official launch.
   hours: 'Monday – Sunday: 8am – 4am',
   hoursShort: 'Open 7 Days · 8am – 4am',
 }
@@ -62,39 +64,3 @@ export const SERVICES = [
     image: '/images/services/bridal-styling.png',
   },
 ]
-
-// Reviews reflecting the salon's verified 4.9-star Google Business rating
-// (google.com/maps?cid=4430934913319300766). Swap text with exact quotes
-// from the Google Reviews page whenever the client wants word-for-word copies.
-export const TESTIMONIALS = [
-  {
-    name: 'Ahmed Raza',
-    text: 'Best salon in Canal Gardens by far. Got a skin fade and beard shape-up — the barber took his time and the finish was perfect. Highly recommended.',
-  },
-  {
-    name: 'Bilal Khan',
-    text: 'These guys are open till 4am which is a lifesaver. Walked in late at night, zero rush, still got a proper detailed haircut. 5 stars.',
-  },
-  {
-    name: 'Muhammad Usman',
-    text: 'Very professional staff and a very clean setup. They actually listen to what you want instead of doing the same cut for everyone.',
-  },
-  {
-    name: 'Sana Malik',
-    text: 'Took my son for his haircut and the staff were so patient and friendly with him. He loved it and the cut turned out great.',
-  },
-  {
-    name: 'Hassan Ali',
-    text: 'Got the full grooming package before my wedding — haircut, beard, facial. Worth every rupee. Sharpest I have ever looked.',
-  },
-  {
-    name: 'Hira Ahmed',
-    text: 'Got my hair colored and treated here. They use premium products and give honest advice. Really happy with the result.',
-  },
-]
-
-// Real brand logo images provided by the client
-export const BRANDS = Array.from({ length: 10 }, (_, i) => ({
-  name: `Brand ${i + 1}`,
-  image: `/images/brands/brand-${i + 1}.png`,
-}))

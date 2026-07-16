@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { MessageCircle, Scissors, Sparkles, Users, Clock, MapPin } from 'lucide-react'
 import { Navbar } from '@/components/site/navbar'
 import { Footer } from '@/components/site/footer'
@@ -8,7 +9,7 @@ import { FinalCta } from '@/components/site/final-cta'
 import { SALON } from '@/lib/salon'
 
 export const metadata: Metadata = {
-  title: 'About | Deep Cuts Salon — Premium Grooming in Canal Garden, Lahore',
+  title: 'About',
   description:
     'Learn the story behind Deep Cuts Salon — a modern unisex salon in Canal Garden Lahore built on precision cuts, expert grooming, and a standard for every client.',
 }
@@ -45,28 +46,31 @@ const TEAM_SERVICES = [
   { label: 'Facials & Grooming', icon: Scissors },
 ]
 
-const STATS = [
-  { value: '5,000+', label: 'Happy Clients' },
-  { value: '4.9★', label: 'Google Rating' },
-  { value: '8+', label: 'Expert Services' },
-  { value: '20h', label: 'Open Daily' },
+const FEATURES = [
+  { value: 'Open 7 Days', label: '8am to 4am Schedule' },
+  { value: 'WhatsApp', label: 'Easy Instant Booking' },
+  { value: 'Unisex', label: 'Men, Women & Kids' },
+  { value: 'Canal Garden', label: 'Premium Location' },
 ]
 
 export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
 
         {/* ── Hero ── */}
-        <section className="relative flex min-h-[70vh] flex-col justify-end overflow-hidden border-b border-border">
-          <div className="absolute inset-0">
-            {/* IMAGE NEEDED: public/images/about/hero-bg.png — moody barbershop hero, similar tone to homepage */}
+        <section className="border-b border-border bg-secondary/40">
+          <div className="relative h-[50vh] min-h-[400px] w-full lg:h-[60vh]">
             <ImagePlaceholder
               src="/images/about/hero-bg.png"
-              label="Deep Cuts Salon interior — premium grooming space"
+              label="Deep Cuts Salon interior wide shot"
+              className="absolute inset-0"
+              priority
+              sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-background/80" />
           </div>
 
           <div className="relative mx-auto w-full max-w-7xl px-4 pb-16 pt-40 md:px-8 md:pb-24">
@@ -85,11 +89,28 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ── Business Strengths Strip ── */}
+        <section className="border-b border-border bg-secondary/40">
+          <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+            <div className="grid grid-cols-2 gap-px border border-border bg-border lg:grid-cols-4">
+              {FEATURES.map((feature) => (
+                <div key={feature.label} className="flex flex-col justify-center gap-3 bg-background p-8 text-center md:p-10">
+                  <span className="font-display text-2xl font-semibold uppercase text-primary md:text-3xl">
+                    {feature.value}
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    {feature.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Brand Story ── */}
         <section className="border-b border-border">
           <div className="grid lg:grid-cols-2">
             <div className="relative min-h-[380px] lg:min-h-[600px]">
-              {/* IMAGE NEEDED: public/images/about/interior-2.png — wide shot of the salon floor / styling stations */}
               <ImagePlaceholder
                 src="/images/about/interior-2.png"
                 label="Deep Cuts Salon styling stations"
@@ -121,24 +142,6 @@ export default function AboutPage() {
                   Book on WhatsApp
                 </a>
               </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Stats Strip ── */}
-        <section className="border-b border-border bg-secondary/40">
-          <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-            <div className="grid grid-cols-2 gap-px border border-border bg-border lg:grid-cols-4">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-2 bg-background p-8 md:p-10">
-                  <span className="font-display text-5xl font-semibold text-primary md:text-6xl">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -206,7 +209,6 @@ export default function AboutPage() {
             </div>
 
             <div className="relative min-h-[380px] lg:min-h-[600px]">
-              {/* IMAGE NEEDED: public/images/about/team.png — stylists at work, candid shot inside the salon */}
               <ImagePlaceholder
                 src="/images/about/team.png"
                 label="Deep Cuts Salon team at work"
@@ -246,12 +248,12 @@ export default function AboutPage() {
 
             <Reveal delay={0.2}>
               <div className="mt-8 flex justify-center">
-                <a
+                <Link
                   href="/services"
                   className="border border-foreground/30 px-10 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   View All Services →
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>
